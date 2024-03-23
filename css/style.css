@@ -1,0 +1,195 @@
+/* Step 1: The logo is animated with keyframes. It starts at a width of 25px and grows to 475px and starts with an opacity of 0 and ends with an opacity of 1. The animation takes 5 seconds and only happens when the page is loaded*/
+
+@keyframes logo_animation {
+    from {
+        width: 25px;
+        opacity: 0;
+    }
+    to {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+#logo {
+    animation: logo_animation 5s;
+}
+
+/* Step 2: Body element is set to use Poppins font with serif as a backup. The background image is set to “concrete_seamless.png” and has a backup color of #f1f1f1 */
+
+body {
+    font-family: 'Poppins', serif;
+    background-image: url('../images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+
+/* Step 3: Display is set to flex, felx-direction is set to column to ensure items stack correctly, and align-items is set to center to center the headers */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Step 4: Display is set to flex and flex-direction is set to column to ensure nav links stack correctly  */
+
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step 5: Links will stay blue even after being clicked on */
+
+a:visited {
+    color: blue;
+}
+
+/* Step 6: The headers in the cards are given background color, border styling, and padding. The card borders are also rounded so they do not show behind the heading borders  */
+
+.card > header {
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.card {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* Step 7: They display is set to flex, the flex-direction is set to column to ensure content lines up correctly within the cards and width is set to 450px */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+}
+
+/* Step 8: Dispaly is set to flex, flex-direction is set to column to ensure the cards stack vertically, and alig-items is set to center to center the cards in the middle of the page */
+
+.pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Step 9: Image styling */
+
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step 10: Display is set to flex, flex-wrap is set to wrap so that items wrap and stack, images justified to the center of the page, and images are stretched */
+
+.gallery {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* Media query for screens that are at least 900px wide */
+@media screen and (min-width: 900px){
+/* Step 11: The header tag is set to display:flex and the flex-direction is set to row to place the logo as far left as possible. Justify-content is set to space-between in order for their to be space between the elements so the nav links go as far right as possible. The flex-direction of the nav_links class is set to row so they are next to each other instead of stacked. */
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+    }
+
+/* Step 12: Flex-direction is set to row so that the cards are next to each other instead of stacked and content is centered to the middle of the screen. Flex-basis is used to set the initial size of the cards to 275px */
+
+    .pricing {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .card {
+        flex-basis: 275px;
+    }
+
+/* Step 13: The header is set to remain visisble at the top of the screen when scrolling. The width is set to 100% so the header still takes up the entire width of the page */
+
+    body > header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+}
+
+/* Step 14: This media query makes it so that if the user prefers reduced motion, the logo will not be animated */
+
+@media (prefers-reduced-motion){
+    #logo {
+        animation: none;
+    }
+}
+
+/* This media query changes the layout of the page in print -- portrait mode view */
+@media (orientation: portrait){
+
+/* Step 15: Font of body is set to Arial with a backup of  Helvetica */
+
+    body {
+        font-family: Arial, Helvetica;
+    }
+
+/* Step 16: Background image is removed */
+
+    body {
+        background-image: none;
+    }
+
+/* Step 17: The nav links are placed in a row with space around them. Flex is set so that the nav links do not take up the entire horizontal width so justify-content can be applied. Margin is set to 80px to space items out */
+
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .nav_item {
+        flex: 0 1 auto;
+        margin: 0 80px;
+    }
+
+/* Step 18: Elements align along the bottom */
+
+    .pricing {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+/* Step 19: The card elements are set to have a solid border 2px of #45ADDD and use flex-basis of 325px */
+
+    .card {
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+/* Step 20: Gallery is made invisible */
+
+        .gallery, #gallery {
+            display: none;
+        }
+
+/* Step 21: Thumbs up emoji is added after every 2nd list element in the uls except for the nav ul */
+        .about ul li:nth-child(2)::after {
+            content: "👍";
+        }
+}
+
+
+
+
